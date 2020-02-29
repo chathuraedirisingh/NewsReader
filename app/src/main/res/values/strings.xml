@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="tab_text_1">Top Headlines</string>
+    <string name="tab_text_2">Favorite</string>
+    <string name="tab_text_3">Profile</string>
+</resources>
