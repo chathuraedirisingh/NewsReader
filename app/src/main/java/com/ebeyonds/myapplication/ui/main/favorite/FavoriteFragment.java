@@ -2,6 +2,7 @@ package com.ebeyonds.myapplication.ui.main.favorite;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.ebeyonds.myapplication.R;
 
 public class FavoriteFragment extends Fragment {
 
+    ProgressDialog progressDoalog;
     private FavoriteViewModel mViewModel;
 
     public static FavoriteFragment newInstance() {
@@ -33,6 +35,8 @@ public class FavoriteFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(FavoriteViewModel.class);
         // TODO: Use the ViewModel
+
+
     }
 
 }

@@ -3,4 +3,11 @@
     <string name="tab_text_1">Top Headlines</string>
     <string name="tab_text_2">Favorite</string>
     <string name="tab_text_3">Profile</string>
+
+    <string-array name="topics">
+        <item>Apple</item>
+        <item>Animal</item>
+        <item>Bitcoin</item>
+        <item>Earthquake</item>
+    </string-array>
 </resources>
