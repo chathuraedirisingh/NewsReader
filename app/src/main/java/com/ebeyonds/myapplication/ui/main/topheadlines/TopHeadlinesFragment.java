@@ -80,7 +80,7 @@ public class TopHeadlinesFragment extends Fragment {
 
     private void generateDataList(NewsResponse body) {
         recyclerView = this.mView.findViewById(R.id.customRecyclerView);
-        adapter = new NewsAdapter(body.getArticles());
+        adapter = new NewsAdapter(getActivity(),body.getArticles());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
