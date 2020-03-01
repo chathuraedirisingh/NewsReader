@@ -33,5 +33,7 @@ Completed Tasks:
 - [x] Login & Navigation
 - [x] Read Headlines & Search User Preffered Keyword
 - [x] Sign Out (Clearing Shared Preference)
+- [ ] Animations (Glide)
 - [ ] Bind View (ButterKnife)
 - [ ] Dependancy Injection (Dagger 2)
+- [ ] Error Handling
