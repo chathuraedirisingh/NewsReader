@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ebeyonds.myapplication.MainActivity;
 import com.ebeyonds.myapplication.R;
 import com.ebeyonds.myapplication.adapter.NewsAdapter;
 import com.ebeyonds.myapplication.data.entity.NewsResponse;

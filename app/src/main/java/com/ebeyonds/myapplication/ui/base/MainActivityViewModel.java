@@ -1,20 +1,23 @@
-package com.ebeyonds.myapplication.ui.main.profile;
+package com.ebeyonds.myapplication.ui.base;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ProfileViewModel extends ViewModel {
+import com.ebeyonds.myapplication.data.entity.NewsResponse;
 
-    private MutableLiveData<Integer> is_logged_in = new MutableLiveData<>();
+public class MainActivityViewModel extends ViewModel {
+
+    private MutableLiveData<Integer> IS_LOGGED_IN = new MutableLiveData<>();
     private MutableLiveData<String> username = new MutableLiveData<>();
     private MutableLiveData<String> password = new MutableLiveData<>();
 
-    public MutableLiveData<Integer> getIs_logged_in() {
-        return is_logged_in;
+
+    public MutableLiveData<Integer> getIS_LOGGED_IN() {
+        return IS_LOGGED_IN;
     }
 
-    public void setIs_logged_in(int is_logged_in) {
-        this.is_logged_in.setValue(is_logged_in);
+    public void setIS_LOGGED_IN(int IS_LOGGED_IN) {
+        this.IS_LOGGED_IN.setValue(IS_LOGGED_IN);
     }
 
     public MutableLiveData<String> getUsername() {

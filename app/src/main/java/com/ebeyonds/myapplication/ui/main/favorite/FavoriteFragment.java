@@ -35,7 +35,7 @@ import retrofit2.Response;
 
 public class FavoriteFragment extends Fragment {
 
-    private ProgressDialog progressDoalog;
+    private ProgressDialog progressDialog;
     private FavoriteViewModel mViewModel;
     private View root;
 
@@ -82,21 +82,21 @@ public class FavoriteFragment extends Fragment {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDoalog = new ProgressDialog(getActivity());
-                progressDoalog.setMessage("Loading....");
-                progressDoalog.show();
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Loading....");
+                progressDialog.show();
 
                 Call<NewsResponse> call = newsService.getByFavorite(mViewModel.getQuery().getValue());
                 call.enqueue(new Callback<NewsResponse>() {
                     @Override
                     public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
-                        progressDoalog.dismiss();
+                        progressDialog.dismiss();
                         mViewModel.setNewsResponse(response.body());
                     }
 
                     @Override
                     public void onFailure(Call<NewsResponse> call, Throwable t) {
-                        progressDoalog.dismiss();
+                        progressDialog.dismiss();
                         Log.e("GET NEWS ERROR", t.getMessage());
                         Toast.makeText(getActivity(), "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
                     }
