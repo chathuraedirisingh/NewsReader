@@ -6,7 +6,7 @@
     android:id="@+id/news_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
+    android:layout_marginBottom="4sp"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardBackgroundColor="#FFFFFF"
     card_view:cardCornerRadius="3dp"
@@ -33,7 +33,7 @@
                     android:layout_below="@+id/article_image"
                     android:layout_gravity="top"
                     android:maxLines="3"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -45,7 +45,7 @@
                     android:layout_below="@+id/article_title"
                     android:layout_marginTop="8dp"
                     android:maxLines="6"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <RelativeLayout
                     android:paddingBottom="8dp"
@@ -59,7 +59,6 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginStart="16dp"
                             android:id="@+id/article_source"
-                            fontPath="fonts/Roboto-Bold.ttf"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -69,8 +68,7 @@
                             android:padding="4.5dp"
                             android:textAllCaps="true"
                             android:textColor="@color/white"
-                            android:textSize="10sp"
-                            tools:text="Wired" />
+                            android:textSize="10sp" />
 
                 </RelativeLayout>
 

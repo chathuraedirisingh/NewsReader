@@ -8,6 +8,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/customRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="8sp"
+        android:layout_marginStart="8sp"
+        android:layout_marginEnd="8sp"/>
 
 </FrameLayout>

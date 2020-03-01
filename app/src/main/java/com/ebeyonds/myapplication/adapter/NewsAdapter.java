@@ -79,7 +79,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         }
     }
 
-    public void launchNewTab(String url) {
+    private void launchNewTab(String url) {
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         builder.addDefaultShareMenuItem();
         final Bitmap backButton = BitmapFactory.decodeResource(mContext.getResources(), R.mipmap.ic_arrow_back_white);

@@ -1,5 +1,6 @@
 package com.ebeyonds.myapplication.ui.main.topheadlines;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.ProgressDialog;
@@ -30,17 +31,13 @@ import retrofit2.Response;
 
 public class TopHeadlinesFragment extends Fragment {
 
-    ProgressDialog progressDoalog;
+    private ProgressDialog progressDoalog;
     private TopHeadlinesViewModel mViewModel;
 
     private NewsAdapter adapter;
     private RecyclerView recyclerView;
 
-    View mView;
-
-    public static TopHeadlinesFragment newInstance() {
-        return new TopHeadlinesFragment();
-    }
+    private View mView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -58,15 +55,13 @@ public class TopHeadlinesFragment extends Fragment {
         progressDoalog.setMessage("Loading....");
         progressDoalog.show();
 
-        /*Create handle for the RetrofitInstance interface*/
         NewsService service = RetrofitClientInstance.getRetrofitInstance().create(NewsService.class);
         Call<NewsResponse> call = service.getAllNews();
         call.enqueue(new Callback<NewsResponse>() {
             @Override
             public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
                 progressDoalog.dismiss();
-                Log.d("RESPONSE", response.body().toString());
-                generateDataList(response.body());
+                mViewModel.setNewsResponse(response.body());
             }
 
             @Override
@@ -76,14 +71,18 @@ public class TopHeadlinesFragment extends Fragment {
                 Toast.makeText(getActivity(), "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
-    private void generateDataList(NewsResponse body) {
-        recyclerView = this.mView.findViewById(R.id.customRecyclerView);
-        adapter = new NewsAdapter(getActivity(),body.getArticles());
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        mViewModel.getNewsResponse().observe(getViewLifecycleOwner(), new Observer<NewsResponse>() {
+            @Override
+            public void onChanged(NewsResponse newsResponse) {
+                recyclerView = mView.findViewById(R.id.customRecyclerView);
+                adapter = new NewsAdapter(getActivity(),newsResponse.getArticles());
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
 }

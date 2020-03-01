@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">News Reader</string>
     <string name="tab_text_1">Top Headlines</string>
     <string name="tab_text_2">Favorite</string>
     <string name="tab_text_3">Profile</string>
+    <string name="search">Search</string>
 
     <string-array name="topics">
         <item>Apple</item>
