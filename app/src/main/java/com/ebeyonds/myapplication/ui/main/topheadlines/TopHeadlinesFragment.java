@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import com.ebeyonds.myapplication.MainActivity;
 import com.ebeyonds.myapplication.R;
+import com.ebeyonds.myapplication.adapter.NewsAdapter;
 import com.ebeyonds.myapplication.data.entity.NewsResponse;
 import com.ebeyonds.myapplication.network.NewsService;
 import com.ebeyonds.myapplication.network.RetrofitClientInstance;
@@ -30,6 +33,11 @@ public class TopHeadlinesFragment extends Fragment {
     ProgressDialog progressDoalog;
     private TopHeadlinesViewModel mViewModel;
 
+    private NewsAdapter adapter;
+    private RecyclerView recyclerView;
+
+    View mView;
+
     public static TopHeadlinesFragment newInstance() {
         return new TopHeadlinesFragment();
     }
@@ -37,7 +45,8 @@ public class TopHeadlinesFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.top_headlines_fragment, container, false);
+        mView =  inflater.inflate(R.layout.top_headlines_fragment, container, false);
+        return mView;
     }
 
     @Override
@@ -57,7 +66,7 @@ public class TopHeadlinesFragment extends Fragment {
             public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
                 progressDoalog.dismiss();
                 Log.d("RESPONSE", response.body().toString());
-//                generateDataList(response.body());
+                generateDataList(response.body());
             }
 
             @Override
@@ -67,6 +76,14 @@ public class TopHeadlinesFragment extends Fragment {
                 Toast.makeText(getActivity(), "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void generateDataList(NewsResponse body) {
+        recyclerView = this.mView.findViewById(R.id.customRecyclerView);
+        adapter = new NewsAdapter(body.getArticles());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
 }
